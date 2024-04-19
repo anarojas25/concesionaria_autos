@@ -2,6 +2,9 @@
 package com.mycompany.concesionario_carros.GUI;
 
 public class Principal extends javax.swing.JFrame {
+    
+    VerDatos pantallaVisualización = new VerDatos();
+    AgregarDatos pantallaAgregar = new AgregarDatos();
 
     public Principal() {
         initComponents();
@@ -90,11 +93,11 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
-        // TODO add your handling code here:
+        pantallaVisualización.setVisible(true);
+        pantallaVisualización.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVerDatosActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        AgregarDatos pantallaAgregar = new AgregarDatos();
         pantallaAgregar.setVisible(true);
         pantallaAgregar.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAgregarActionPerformed

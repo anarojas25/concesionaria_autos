@@ -1,7 +1,13 @@
 
 package com.mycompany.concesionario_carros.GUI;
 
+import com.mycompany.concesionario_carros.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class AgregarDatos extends javax.swing.JFrame {
+    
+    Controladora controlLogica = new Controladora();
 
     public AgregarDatos() {
         initComponents();
@@ -58,8 +64,18 @@ public class AgregarDatos extends javax.swing.JFrame {
         });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,6 +169,34 @@ public class AgregarDatos extends javax.swing.JFrame {
     private void txtPuertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuertasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPuertasActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+    
+    txtColor.setText(" ");
+    txtMarca.setText(" ");
+    txtModelo.setText(" ");
+    txtMotor.setText(" ");
+    txtPlaca.setText(" ");
+    txtPuertas.setText(" ");
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String modelo = txtModelo.getText();
+        String marca = txtMarca.getText();
+        String motor = txtMotor.getText();
+        String color = txtColor.getText();
+        String placa = txtPlaca.getText();
+        int puertas = Integer.parseInt(txtPuertas.getText());
+        
+        controlLogica.guardarDatos(modelo, marca, motor, color, placa, puertas);
+        
+        JOptionPane optionPane = new JOptionPane("Se guardó exitosamente el auto.");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

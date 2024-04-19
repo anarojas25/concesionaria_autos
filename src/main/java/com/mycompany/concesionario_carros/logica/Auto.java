@@ -1,9 +1,20 @@
 
 package com.mycompany.concesionario_carros.logica;
 
-public class Auto {
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Auto implements Serializable {
     //atributos: id, modelo, marca, motor, color, placa, puertas
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     protected int id;
+    @Basic
     protected String modelo;
     protected String marca;
     protected String motor;
