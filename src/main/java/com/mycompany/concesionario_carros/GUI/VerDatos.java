@@ -3,6 +3,8 @@ package com.mycompany.concesionario_carros.GUI;
 import com.mycompany.concesionario_carros.logica.Auto;
 import com.mycompany.concesionario_carros.logica.Controladora;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VerDatos extends javax.swing.JFrame {
@@ -125,11 +127,40 @@ public class VerDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        
+        if(tablaAutos.getRowCount() > 0){
+            if (tablaAutos.getSelectedRow()!=-1){
+                
+                int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
+                controladoraLogica.eliminarAuto(idAuto);
+                
+                JOptionPane optionPane = new JOptionPane("Se eliminó exitosamente el resgistro.");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Eliminación exitosa.");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+                
+                cargarTabla();
+            }
+            
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        if(tablaAutos.getRowCount() > 0){
+            if (tablaAutos.getSelectedRow()!=-1){
+                
+                int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
+                
+                EditarDatos editarAuto = new EditarDatos(idAuto);
+                editarAuto.setVisible(true);
+                editarAuto.setLocationRelativeTo(null);
+                
+                this.dispose();
+            }
+            
+           this.dispose();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
